@@ -1,4 +1,4 @@
-# Træningscenter – fra én stor klasse til komposition og nedarving
+# Træningscenter: fra én stor klasse til komposition og nedarving
 
 Denne opgave løber over hele ugen **Genbrug med komposition og nedarving**.
 
@@ -9,13 +9,15 @@ Målet er, at du selv mærker *hvorfor* vi har brug for de nye begreber, før du
 
 ### Læringsmål for ugen
 
-**Komposition** – du kan
+**Komposition**
+i slutningen af ugen kan du:
 - referere fra én klasse til en instans af en anden klasse
 - genbruge kode i stedet for at gentage den
 - splitte din kode ud i relevante klasser, der gør brug af hinanden
 - afgøre, om der er en has-a- eller en is-a-relation mellem to klasser
 
-**Nedarving** – du kan
+**Nedarving**
+i slutningen af ugen kan du:
 - bruge keywordet `extends` til at nedarve fra en klasse
 - bruge keywordet `super` til at kalde konstruktøren på din superklasse
 - bruge keywordet `abstract` til at gøre klasser og metoder abstrakte
@@ -150,7 +152,7 @@ Læs **has-a.md** inden du går i gang med 2.1–2.6, og **is-a.md** inden du g�
 
 Start et nyt sæt klasser ved siden af `ClassIntroduction`. Behold `ClassIntroduction` uændret, så du kan sammenligne til sidst.
 
-## Del A – Komposition (has-a)
+## Del A: Komposition (has-a)
 
 ### 2.1 Find ansvarsområderne
 
@@ -211,7 +213,7 @@ public boolean removeParticipant(Member member)
 - Hvor skal listen `participants` oprettes med `new`? Hvad sker der, hvis du glemmer det?
 - I `ClassIntroduction` talte vi deltagere med et `int`. Hvad kan vi nu, som vi ikke kunne før?
 
-### 2.5 Klassen `Booking` – et objekt, der binder to andre sammen
+### 2.5 Klassen `Booking`: et objekt, der binder to andre sammen
 
 En booking forbinder et medlem med en træningstime.
 
@@ -282,7 +284,7 @@ Afgør for hvert par, om det er **has-a**, **is-a** eller ingen af delene:
 
 ---
 
-## Del B – Nedarving (is-a)
+## Del B: Nedarving (is-a)
 
 ### 2.7 Problemet med `type`
 
