@@ -1,0 +1,110 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title Træningscenter – klasser (uden relationer)
+
+skinparam classAttributeIconSize 0
+hide empty members
+
+class Main {
+    + {static} main(String[] args) : void
+    - {static} printHeader(String title) : void
+}
+
+class UI {
+    - center : FitnessCenter
+    - scanner : Scanner
+    + UI(FitnessCenter center, Scanner scanner)
+    + run() : void
+    - printMenu() : void
+    - showAllMembers() : void
+    - showAllSessions() : void
+    - showAvailableSessions() : void
+    - createMember() : void
+    - createSession() : void
+    - bookSession() : void
+    - cancelBooking() : void
+    - showBookings() : void
+    - findMember(int memberId) : Member
+    - findSession(String title) : TrainingSession
+    - readInt(String prompt) : int
+    - readText(String prompt) : String
+}
+
+class FitnessCenter {
+    - name : String
+    - members : ArrayList<Member>
+    - sessions : ArrayList<TrainingSession>
+    + FitnessCenter(String name)
+    + getName() : String
+    + addMember(Member member) : boolean
+    + addSession(TrainingSession session) : boolean
+    + findMember(int memberId) : Member
+    + findSession(String title) : TrainingSession
+    + bookSession(Member member, TrainingSession session) : boolean
+    + cancelBooking(Member member, TrainingSession session) : boolean
+    + printAllMembers() : void
+    + printAllSessions() : void
+    + printAvailableSessions() : void
+}
+
+abstract class Member {
+    - name : String
+    - memberId : int
+    - bookings : ArrayList<Booking>
+    + Member(String name, int memberId)
+    + getName() : String
+    + getMemberId() : int
+    + addBooking(Booking booking) : void
+    + printBookings() : void
+    + getActiveBookingCount() : int
+    + findActiveBooking(TrainingSession session) : Booking
+    + hasBooked(TrainingSession session) : boolean
+    + hasReachedMaxBookings() : boolean
+    + getMembershipType() : String
+    + printMember() : void
+    + {abstract} getMaxBookings() : int
+    + {abstract} getMonthlyPrice() : double
+}
+
+class BasicMember {
+    + BasicMember(String name, int memberId)
+    + getMaxBookings() : int
+    + getMonthlyPrice() : double
+}
+
+class PremiumMember {
+    + PremiumMember(String name, int memberId)
+    + getMaxBookings() : int
+    + getMonthlyPrice() : double
+}
+
+class TrainingSession {
+    - title : String
+    - instructor : String
+    - capacity : int
+    - participants : ArrayList<Member>
+    + TrainingSession(String title, String instructor, int capacity)
+    + getTitle() : String
+    + getInstructor() : String
+    + getCapacity() : int
+    + addParticipant(Member member) : boolean
+    + removeParticipant(Member member) : boolean
+    + hasAvailableSpace() : boolean
+    + getAvailableSpaces() : int
+    + printSession() : void
+}
+
+class Booking {
+    - member : Member
+    - trainingSession : TrainingSession
+    - active : boolean
+    + Booking(Member member, TrainingSession trainingSession)
+    + getMember() : Member
+    + getTrainingSession() : TrainingSession
+    + cancel() : void
+    + isActive() : boolean
+    + printBooking() : void
+}
+
+@enduml

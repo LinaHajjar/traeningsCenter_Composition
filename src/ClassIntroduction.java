@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
- * Trin 1: Hele træningscenteret skrevet i ÉN klasse.
- *
- * Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
- * medlemmer, træningstimer, bookinger, regler og udskrifter.
- * Data om ét medlem er spredt ud over tre forskellige lister, og
- * medlemstypen er en String, som vi hele tiden skal tjekke med if/else.
- *
- * Brug klassen som udgangspunkt for trin 2 i README.md.
+Trin 1: Hele træningscenteret skrevet i ÉN klasse.
+
+Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
+medlemmer, træningstimer, bookinger, regler og udskrifter.
+Data om ét medlem er spredt ud over tre forskellige lister, og
+medlemstypen er en String,
+som vi hele tiden skal tjekke med if/else.
+
+Brug klassen som udgangspunkt for trin 2 i README.md.
  */
 public class ClassIntroduction {
     private String centerName;
@@ -275,7 +276,6 @@ public class ClassIntroduction {
             System.out.println("6. Book en træningstime");
             System.out.println("7. Afmeld en træningstime");
             System.out.println("8. Vis et medlems aktive bookinger");
-            System.out.println("9. Kør testscenariet");
             System.out.println("0. Afslut");
             int choice = readInt(scanner, "Vælg: ");
             System.out.println();
@@ -314,8 +314,6 @@ public class ClassIntroduction {
             } else if (choice == 8) {
                 int memberId = readInt(scanner, "Medlemsnummer: ");
                 printBookings(memberId);
-            } else if (choice == 9) {
-                runTestScenario();
             } else if (choice == 0) {
                 running = false;
                 System.out.println("Farvel!");
@@ -361,9 +359,8 @@ public class ClassIntroduction {
 
     // ---------- Test ----------
 
-    // Kører på et nyt center, så testen ikke ændrer data i menuen
-    public static void runTestScenario() {
-        ClassIntroduction center = new ClassIntroduction("TestGym");
+    public static void main(String[] args) {
+        ClassIntroduction center = new ClassIntroduction("PowerGym");
         center.addSampleData();
         center.addMember("Ole", 104, "Studerende"); // Afvises, typen findes ikke
 
@@ -408,21 +405,13 @@ public class ClassIntroduction {
         System.out.println();
         center.bookSession(103, "Yoga");
 
-        printHeader("Oversigt");
-        center.printAllMembers();
-        System.out.println();
-        center.printAllSessions();
+        // Start menuen med de data, testene har lavet
+        Scanner scanner = new Scanner(System.in);
+        center.runMenu(scanner);
     }
 
     private static void printHeader(String title) {
         System.out.println();
         System.out.println("===== " + title + " =====");
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ClassIntroduction center = new ClassIntroduction("PowerGym");
-        center.addSampleData();
-        center.runMenu(scanner);
     }
 }
