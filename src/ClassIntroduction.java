@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
- * Trin 1: Hele træningscenteret skrevet i ÉN klasse.
- *
- * Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
+Trin 1: Hele træningscenteret skrevet i ÉN klasse.
+Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
  * medlemmer, træningstimer, bookinger, regler og udskrifter.
  * Data om ét medlem er spredt ud over tre forskellige lister, og
- * medlemstypen er en String, som vi hele tiden skal tjekke med if/else.
- *
- * Brug klassen som udgangspunkt for trin 2 i README.md.
+ medlemstypen er en String, som vi hele tiden skal tjekke med if/else.
+ Brug klassen som udgangspunkt for trin 2 i TRIN2.md og TRIN3.md
+
  */
+
 public class ClassIntroduction {
     private String centerName;
 
@@ -260,7 +260,7 @@ public class ClassIntroduction {
     }
 
 
-    // ---------- Brugergrænseflade (menu i konsollen) ----------
+    // ---------- UI: Brugergrænseflade (menu i konsollen) ----------
 
     public void runMenu(Scanner scanner) {
         boolean running = true;
@@ -358,7 +358,7 @@ public class ClassIntroduction {
 
     public static void main(String[] args) {
         ClassIntroduction center = new ClassIntroduction("PowerGym");
-        center.addSampleData(); // Testdata, så man kan prøve programmet med det samme
+        center.addSampleData(); // Testdata, så man kan prøve programmet
 
         Scanner scanner = new Scanner(System.in);
         center.runMenu(scanner);
