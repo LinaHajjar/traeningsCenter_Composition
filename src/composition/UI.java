@@ -3,25 +3,30 @@ package composition;
 import java.util.Scanner;
 
 /*
- * UI = brugergrænseflade.
- *
- * Klassen har KUN ansvar for at tale med brugeren: vise menuen og læse input.
- * Reglerne for medlemmer, træningstimer og bookinger skal ligge i dine egne klasser
- * (FitnessCenter, Member, TrainingSession, Booking ...), ikke her.
- *
- * Menuen og input-metoderne er færdige. Din opgave er at udfylde TODO'erne,
- * efterhånden som du laver klasserne i trin 2 i README.md.
- */
+UI (User Interface): brugergrænseflade.
+
+Klassen har KUN ansvar for at tale med brugeren: vise menuen og læse input.
+Reglerne for medlemmer, træningstimer og bookinger skal ligge i dine egne klasser
+(FitnessCenter, Member, TrainingSession, Booking ...), ikke her.
+
+Menuen og input-metoderne er færdige. Din opgave er at udfylde TODO'erne,
+efterhånden som du laver klasserne i trin 2 i TRIN2.md og TRIN3.md
+*/
+
+
 public class UI {
-    private Scanner scanner; // HAS-A: UI'en læser input med en Scanner
+    private Scanner scanner; //læser input fra brugeren med en Scanner
 
     // TODO (2.6): Når du har lavet FitnessCenter, skal UI'en have et felt til det:
     // private FitnessCenter center;
+
 
     public UI(Scanner scanner) {
         this.scanner = scanner;
         // TODO (2.6): Modtag et FitnessCenter i konstruktøren, og gem det i feltet
     }
+
+
 
     public void run() {
         boolean running = true;
@@ -30,27 +35,38 @@ public class UI {
             int choice = readInt("Vælg: ");
             System.out.println();
 
-            if (choice == 1) {
-                showAllMembers();
-            } else if (choice == 2) {
-                showAllSessions();
-            } else if (choice == 3) {
-                showAvailableSessions();
-            } else if (choice == 4) {
-                createMember();
-            } else if (choice == 5) {
-                createSession();
-            } else if (choice == 6) {
-                bookSession();
-            } else if (choice == 7) {
-                cancelBooking();
-            } else if (choice == 8) {
-                showBookings();
-            } else if (choice == 0) {
-                running = false;
-                System.out.println("Farvel!");
-            } else {
-                System.out.println("Ugyldigt valg. Prøv igen.");
+            switch (choice) {
+                case 1:
+                    showAllMembers();
+                    break;
+                case 2:
+                    showAllSessions();
+                    break;
+                case 3:
+                    showAvailableSessions();
+                    break;
+                case 4:
+                    createMember();
+                    break;
+                case 5:
+                    createSession();
+                    break;
+                case 6:
+                    bookSession();
+                    break;
+                case 7:
+                    cancelBooking();
+                    break;
+                case 8:
+                    showBookings();
+                    break;
+                case 0:
+                    running = false;
+                    System.out.println("Farvel!");
+                    break;
+
+                default:
+                    System.out.println("Ugyldigt valg. Prøv igen.");
             }
         }
     }
@@ -133,8 +149,10 @@ public class UI {
     }
 
     private void notImplemented() {
+
         System.out.println("Dette menupunkt er ikke lavet endnu.");
     }
+
 
     // ---------- Hjælpemetoder til input ----------
 
