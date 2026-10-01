@@ -115,16 +115,3 @@ public void printAvailableSessions()
 
 
 
-### Opsamling: has-a eller is-a?
-
-Afgør for hvert par, om det er **has-a**, **is-a** eller ingen af delene:
-
-| Par | has-a / is-a? |
-|---|---|
-| `FitnessCenter` – `Member` | |
-| `Booking` – `TrainingSession` | |
-| Premium-medlem – medlem | |
-| `Member` – `Booking` | |
-| Yogatime – træningstime | |
-| Instruktør – person | |
-| `TrainingSession` – instruktør | |
