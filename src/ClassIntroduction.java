@@ -2,15 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
-Trin 1: Hele træningscenteret skrevet i ÉN klasse.
-
-Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
-medlemmer, træningstimer, bookinger, regler og udskrifter.
-Data om ét medlem er spredt ud over tre forskellige lister, og
-medlemstypen er en String,
-som vi hele tiden skal tjekke med if/else.
-
-Brug klassen som udgangspunkt for trin 2 i README.md.
+ * Trin 1: Hele træningscenteret skrevet i ÉN klasse.
+ *
+ * Programmet virker, men læg mærke til, hvor meget der ligger samme sted:
+ * medlemmer, træningstimer, bookinger, regler og udskrifter.
+ * Data om ét medlem er spredt ud over tre forskellige lister, og
+ * medlemstypen er en String, som vi hele tiden skal tjekke med if/else.
+ *
+ * Brug klassen som udgangspunkt for trin 2 i README.md.
  */
 public class ClassIntroduction {
     private String centerName;
@@ -357,61 +356,11 @@ public class ClassIntroduction {
         addSession("Pilates", "Nadia", 5);
     }
 
-    // ---------- Test ----------
-
     public static void main(String[] args) {
         ClassIntroduction center = new ClassIntroduction("PowerGym");
-        center.addSampleData();
-        center.addMember("Ole", 104, "Studerende"); // Afvises, typen findes ikke
+        center.addSampleData(); // Testdata, så man kan prøve programmet med det samme
 
-        printHeader("Medlemmer og træningstimer");
-        center.printAllMembers();
-        System.out.println();
-        center.printAllSessions();
-
-        printHeader("Test 1: Begge medlemstyper kan booke");
-        center.bookSession(101, "Yoga");
-        center.bookSession(102, "Spinning");
-
-        printHeader("Test 2: En fuld træningstime afviser flere bookinger");
-        center.bookSession(103, "Spinning");
-        center.bookSession(102, "Yoga");
-        center.bookSession(103, "Yoga");
-
-        printHeader("Test 3: Et medlem kan ikke booke samme time to gange");
-        center.bookSession(101, "Yoga");
-
-        printHeader("Test 4: Et medlem kan ikke overskride sin bookinggrænse");
-        center.bookSession(101, "Crossfit");
-        center.bookSession(101, "Pilates"); // Sara er Basic: max 2
-        System.out.println();
-        center.bookSession(102, "Crossfit");
-        center.bookSession(102, "Pilates"); // Ali er Premium: max 5
-
-        printHeader("Test 5: Aktive bookinger kan vises");
-        center.printBookings(101);
-        center.printBookings(102);
-
-        printHeader("Test 6: En booking kan annulleres");
-        System.out.print("Før: ");
-        center.printSession(center.findSessionIndex("Yoga"));
-        center.cancelBooking(101, "Yoga");
-        center.cancelBooking(101, "Yoga");
-
-        printHeader("Test 7: Den ledige plads kommer tilbage efter annullering");
-        System.out.print("Efter: ");
-        center.printSession(center.findSessionIndex("Yoga"));
-        center.printAvailableSessions();
-        System.out.println();
-        center.bookSession(103, "Yoga");
-
-        // Start menuen med de data, testene har lavet
         Scanner scanner = new Scanner(System.in);
         center.runMenu(scanner);
-    }
-
-    private static void printHeader(String title) {
-        System.out.println();
-        System.out.println("===== " + title + " =====");
     }
 }

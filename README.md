@@ -119,17 +119,10 @@ private ArrayList<Integer> memberIds;
 private ArrayList<String> memberTypes;
 ```
 
-### Test i `main`
+### Testdata
 
-Opret mindst 2 Basic-medlemmer, 1 Premium-medlem og 3 træningstimer, hvoraf mindst én kun har 1–2 pladser. Skriv testene direkte i `main`, **før** menuen starter, og test at
-
-1. begge medlemstyper kan booke,
-2. en fuld træningstime afviser flere bookinger,
-3. et medlem ikke kan booke samme time to gange,
-4. et medlem ikke kan overskride sin bookinggrænse,
-5. aktive bookinger kan vises,
-6. en booking kan annulleres,
-7. den ledige plads kommer tilbage efter en annullering.
+Når programmet starter, skal der allerede være testdata, så man kan prøve menuen med det samme: mindst 2 Basic-medlemmer, 1 Premium-medlem og 3 træningstimer, hvoraf mindst én kun har 1–2 pladser.
+Programmet skal starte direkte med menuen. Testdataene vises først, når brugeren vælger at se medlemmer eller træningstimer.
 
 # Refleksion efter trin 1:
 
