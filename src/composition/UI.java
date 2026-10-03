@@ -15,14 +15,14 @@ efterhånden som du laver klasserne i trin 2 i TRIN2.md og TRIN3.md
 
 
 public class UI {
-    private Scanner scanner; //læser input fra brugeren med en Scanner
+    private Scanner scan; //læser input fra brugeren med en Scanner
 
-    // TODO (2.6): Når du har lavet FitnessCenter, skal UI'en have et felt til det:
+    // TODO : Når du har lavet FitnessCenter, skal UI'en have et felt til det:
     // private FitnessCenter center;
 
 
-    public UI(Scanner scanner) {
-        this.scanner = scanner;
+    public UI(Scanner scan) {
+        this.scan = scan;
         // TODO (2.6): Modtag et FitnessCenter i konstruktøren, og gem det i feltet
     }
 
@@ -159,22 +159,22 @@ public class UI {
     // Bliver ved med at spørge, indtil brugeren skriver et helt tal
     private int readInt(String prompt) {
         System.out.print(prompt);
-        while (!scanner.hasNextInt()) {
-            scanner.nextLine();
+        while (!scan.hasNextInt()) {
+            scan.nextLine();
             System.out.print("Skriv et tal: ");
         }
-        int number = scanner.nextInt();
-        scanner.nextLine(); // fjern linjeskiftet efter tallet
+        int number = scan.nextInt();
+        scan.nextLine(); // fjern linjeskiftet efter tallet
         return number;
     }
 
     // Bliver ved med at spørge, indtil brugeren skriver noget
     private String readText(String prompt) {
         System.out.print(prompt);
-        String text = scanner.nextLine().trim();
+        String text = scan.nextLine().trim();
         while (text.isEmpty()) {
             System.out.print("Feltet må ikke være tomt: ");
-            text = scanner.nextLine().trim();
+            text = scan.nextLine().trim();
         }
         return text;
     }
