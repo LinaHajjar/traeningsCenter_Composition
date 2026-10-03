@@ -89,17 +89,17 @@ public class UI {
 
     private void showAllMembers() {
         // TODO: Bed FitnessCenter om at udskrive alle medlemmer
-        notImplemented();
+        //center.printAllMembers();
     }
 
     private void showAllSessions() {
         // TODO: Bed FitnessCenter om at udskrive alle træningstimer
-        notImplemented();
+        //center.printAllSessions();
     }
 
     private void showAvailableSessions() {
         // TODO: Bed FitnessCenter om at udskrive træningstimer med ledige pladser
-        notImplemented();
+        //center.printAvailableSessions();
     }
 
     private void createMember() {
