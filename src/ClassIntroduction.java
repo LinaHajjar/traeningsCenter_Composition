@@ -262,7 +262,7 @@ public class ClassIntroduction {
 
     // ---------- UI: Brugergrænseflade (menu i konsollen) ----------
 
-    public void runMenu(Scanner scanner) {
+    public void runMenu(Scanner scan) {
         boolean running = true;
         while (running) {
             System.out.println();
@@ -276,7 +276,7 @@ public class ClassIntroduction {
             System.out.println("7. Afmeld en træningstime");
             System.out.println("8. Vis et medlems aktive bookinger");
             System.out.println("0. Afslut");
-            int choice = readInt(scanner, "Vælg: ");
+            int choice = readInt(scan, "Vælg: ");
             System.out.println();
 
             if (choice == 1) {
@@ -286,32 +286,32 @@ public class ClassIntroduction {
             } else if (choice == 3) {
                 printAvailableSessions();
             } else if (choice == 4) {
-                String name = readText(scanner, "Navn: ");
-                int memberId = readInt(scanner, "Medlemsnummer: ");
-                String type = readText(scanner, "Medlemstype (Basic/Premium): ");
+                String name = readText(scan, "Navn: ");
+                int memberId = readInt(scan, "Medlemsnummer: ");
+                String type = readText(scan, "Medlemstype (Basic/Premium): ");
                 if (addMember(name, memberId, type)) {
                     System.out.println(name + " er oprettet som " + type + "-medlem.");
                 }
             } else if (choice == 5) {
-                String title = readText(scanner, "Titel: ");
-                String instructor = readText(scanner, "Instruktør: ");
-                int capacity = readInt(scanner, "Antal pladser: ");
+                String title = readText(scan, "Titel: ");
+                String instructor = readText(scan, "Instruktør: ");
+                int capacity = readInt(scan, "Antal pladser: ");
                 if (addSession(title, instructor, capacity)) {
                     System.out.println(title + " er oprettet.");
                 }
             } else if (choice == 6) {
                 printAllMembers();
-                int memberId = readInt(scanner, "Medlemsnummer: ");
+                int memberId = readInt(scan, "Medlemsnummer: ");
                 printAvailableSessions();
-                String title = readText(scanner, "Træningstime: ");
+                String title = readText(scan, "Træningstime: ");
                 bookSession(memberId, title);
             } else if (choice == 7) {
-                int memberId = readInt(scanner, "Medlemsnummer: ");
+                int memberId = readInt(scan, "Medlemsnummer: ");
                 printBookings(memberId);
-                String title = readText(scanner, "Træningstime der skal afmeldes: ");
+                String title = readText(scan, "Træningstime der skal afmeldes: ");
                 cancelBooking(memberId, title);
             } else if (choice == 8) {
-                int memberId = readInt(scanner, "Medlemsnummer: ");
+                int memberId = readInt(scan, "Medlemsnummer: ");
                 printBookings(memberId);
             } else if (choice == 0) {
                 running = false;
