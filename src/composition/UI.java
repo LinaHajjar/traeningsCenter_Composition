@@ -46,7 +46,7 @@ public class UI {
                     showAvailableSessions();
                     break;
                 case 4:
-                    createMember();
+                    opretMember();
                     break;
                 case 5:
                     createSession();
@@ -102,10 +102,10 @@ public class UI {
         //center.printAvailableSessions();
     }
 
-    private void createMember() {
+    private void opretMember() {
         String name = readText("Navn: ");
         int memberId = readInt("Medlemsnummer: ");
-        String type = readText("Medlemstype (Basic/Premium): ");
+        //String type = readText("Medlemstype (Basic/Premium): "); vi arbejder på den i morgen
 
         // TODO (2.3): Opret et Member-objekt med name, memberId og type
         // TODO (2.8): Opret i stedet et BasicMember eller et PremiumMember afhængigt af type.
@@ -152,6 +152,17 @@ public class UI {
 
         System.out.println("Dette menupunkt er ikke lavet endnu.");
     }
+
+
+    // TODO:Finder medlemmet og skriver en besked, hvis det ikke findes
+    /*private Member findMember(int memberId) {
+        //TODO
+    }
+
+    // TODO:Finder træningstimen og skriver en besked, hvis den ikke findes
+    private TrainingSession findSession(String title) {
+        //TODO
+    }*/
 
 
     // ---------- Hjælpemetoder til input ----------
