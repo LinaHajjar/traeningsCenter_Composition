@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO : Opret et FitnessCenter, og tilføj nogle medlemmer og træningstimer,
         //             så man kan prøve programmet med det samme. Giv det til UI'en.
+        FitnessCenter center= new FitnessCenter("pureGym");
 
 
         //FinalTest
@@ -21,7 +22,7 @@ public class Main {
         center.addSession(new TrainingSession("Pilates", "Nadia", 5));*/
 
 
-        UI ui = new UI(new Scanner(System.in)); //TODO: skal rettes når et fitnessCenter er oprettet
+        UI ui = new UI(new Scanner(System.in), center); //TODO: skal rettes når et fitnessCenter er oprettet
         ui.run();
     }
 }
