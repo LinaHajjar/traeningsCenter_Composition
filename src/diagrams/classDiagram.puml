@@ -1,19 +1,18 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+'https://plantuml.com/class-diagram
 
-title Træningscenter – klasser (uden relationer)
+title Træningscenter – løsning med relationer
 
 skinparam classAttributeIconSize 0
 hide empty members
 
 class Main {
     + {static} main(String[] args) : void
-    - {static} printHeader(String title) : void
 }
 
 class UI {
-    - center : FitnessCenter
     - scanner : Scanner
+    - center : FitnessCenter
     + UI(FitnessCenter center, Scanner scanner)
     + run() : void
     - printMenu() : void
@@ -30,6 +29,8 @@ class UI {
     - readInt(String prompt) : int
     - readText(String prompt) : String
 }
+
+class Scanner <<java.util>>
 
 class FitnessCenter {
     - name : String
@@ -106,5 +107,37 @@ class Booking {
     + isActive() : boolean
     + printBooking() : void
 }
+
+' ---------- IS-A (nedarving) ----------
+Member <|-- BasicMember : IS-A
+Member <|-- PremiumMember : IS-A
+
+' ---------- HAS-A (komposition) ----------
+UI "1" --> "1" FitnessCenter : HAS-A center
+UI "1" --> "1" Scanner : HAS-A scanner
+FitnessCenter "1" o-- "0..*" Member : HAS-A members
+FitnessCenter "1" o-- "0..*" TrainingSession : HAS-A sessions
+Member "1" o-- "0..*" Booking : HAS-A bookings
+Booking "0..*" --> "1" Member : HAS-A member
+Booking "0..*" --> "1" TrainingSession : HAS-A trainingSession
+TrainingSession "0..*" o-- "0..*" Member : HAS-A participants
+
+' ---------- Hvem opretter objekterne ----------
+Main ..> UI : creates
+Main ..> FitnessCenter : creates
+Main ..> BasicMember : creates
+Main ..> PremiumMember : creates
+Main ..> TrainingSession : creates
+UI ..> BasicMember : creates
+UI ..> PremiumMember : creates
+UI ..> TrainingSession : creates
+FitnessCenter ..> Booking : creates
+
+legend right
+  Hul trekant: IS-A (nedarving med extends)
+  Hul diamant: HAS-A (en liste af objekter som felt)
+  Fuld pil: HAS-A (én reference som felt)
+  Stiplet pil: creates (opretter objekter med new)
+endlegend
 
 @enduml
