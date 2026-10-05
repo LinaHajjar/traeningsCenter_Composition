@@ -38,19 +38,22 @@ public class Member {
     }
 
     //nr. 20
+
     public int getActiveBookingCount(){
         int count=0;
 
         for (Booking b: bookings){
-            if (b.isActive()){}
-            count++;
+            if (b.isActive()) {
+                count++;
+            }
         }
         return count;
     }
 
     //nr.22
+
     public boolean hasReachedMaxBookings(){
-        return getActiveBookingCount() >getMaxBookings();
+        return getActiveBookingCount() >= getMaxBookings();
     }
 
     //nr.21
