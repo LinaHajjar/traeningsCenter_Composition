@@ -1,17 +1,18 @@
 package composition;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class Member {
     private String name;
     private int memberId;
     private ArrayList<Booking> bookings; // HAS-A: et medlem har bookinger
+    private String membershipType;
 
-    //private String membershipType;
-
-    public Member(String name, int memberId){
+    public Member(String name, int memberId, String membershipType){
         this.name=name;
         this.memberId=memberId;
+        this.membershipType=membershipType;
         this.bookings=new ArrayList<>();
     }
 
@@ -57,9 +58,22 @@ public class Member {
     }
 
     //nr.21
-    public int getMaxBookings(){
+    /*public int getMaxBookings(){
         return 3;
+    }*/
+
+
+    public int getMaxBookings() {
+        if (membershipType.equals("Basic")) {
+            return 2;
+        } else if (membershipType.equals("Premium")) {
+            return 5;
+        }
+        return 0;
     }
+
+
+
 
 
     //nr.23: Finder medlemmets aktive booking af en bestemt træningstime, eller null
@@ -95,7 +109,7 @@ public class Member {
     //nr.26
     public void printMember() {
         System.out.println("#" + memberId + " " + name +  ": "
-                + getActiveBookingCount() + "/" + getMaxBookings() + " aktive bookinger");
+                + getActiveBookingCount() + "/" + getMaxBookings() + " aktive bookinger. MemberType: "+ membershipType +"\n");
     }
 
 

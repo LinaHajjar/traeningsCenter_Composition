@@ -33,6 +33,7 @@ public class FitnessCenter {
         System.out.println("Træningstimer i " + name + ":");
         for (TrainingSession session : sessions) {
             session.printSession();
+            System.out.println();
         }
     }
 
@@ -42,6 +43,7 @@ public class FitnessCenter {
         for (TrainingSession session : sessions) {
             if (session.hasAvailableSpace()) {
                 session.printSession();
+                System.out.println();
             }
         }
     }
