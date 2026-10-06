@@ -16,14 +16,12 @@ efterhånden som du laver klasserne i trin 2 i TRIN2.md og TRIN3.md
 
 public class UI {
     private Scanner scan; //læser input fra brugeren med en Scanner
-
-    // TODO : Når du har lavet FitnessCenter, skal UI'en have et felt til det:
-    // private FitnessCenter center;
+    private FitnessCenter center;
 
 
-    public UI(Scanner scan) {
+    public UI(Scanner scan, FitnessCenter center) {
         this.scan = scan;
-        // TODO (2.6): Modtag et FitnessCenter i konstruktøren, og gem det i feltet
+        this.center=center;
     }
 
 
@@ -73,7 +71,7 @@ public class UI {
 
     private void printMenu() {
         System.out.println();
-        System.out.println("===== Træningscenter ====="); // TODO: Vis centerets navn i stedet
+        System.out.println("===== "+ center.getName() + " ====="); // TODO: Vis centerets navn i stedet
         System.out.println("1. Vis alle medlemmer");
         System.out.println("2. Vis alle træningstimer");
         System.out.println("3. Vis træningstimer med ledige pladser");
@@ -88,30 +86,41 @@ public class UI {
     // ---------- Menupunkterne ----------
 
     private void showAllMembers() {
-        // TODO: Bed FitnessCenter om at udskrive alle medlemmer
-        //center.printAllMembers();
+        center.printAllMembers();
     }
 
     private void showAllSessions() {
-        // TODO: Bed FitnessCenter om at udskrive alle træningstimer
-        //center.printAllSessions();
+        center.printAllSessions();
     }
 
     private void showAvailableSessions() {
-        // TODO: Bed FitnessCenter om at udskrive træningstimer med ledige pladser
-        //center.printAvailableSessions();
+        center.printAvailableSessions();
     }
 
     private void opretMember() {
         String name = readText("Navn: ");
         int memberId = readInt("Medlemsnummer: ");
-        //String type = readText("Medlemstype (Basic/Premium): "); vi arbejder på den i morgen
+        String memberType;
 
-        // TODO (2.3): Opret et Member-objekt med name, memberId og type
-        // TODO (2.8): Opret i stedet et BasicMember eller et PremiumMember afhængigt af type.
-        //             Hvilken type skal variablen have, så den kan indeholde begge?
-        // TODO: Tilføj medlemmet til FitnessCenter
-        notImplemented();
+
+        int memberTypeChoice= readInt("medlemstype: 1= Basic, 2= Premium : ");
+
+        if (memberTypeChoice==1){
+            memberType="Basic";
+        }else
+            memberType="Premium";
+
+
+        Member m1= new Member(name, memberId, memberType);
+
+        center.addMember(m1);
+
+        /*String memberType= readText("indtast din medlemstype: ");
+        Member m1= new Member(name, memberId, memberType);
+
+        center.addMember(m1);*/
+
+
     }
 
     private void createSession() {
@@ -119,39 +128,43 @@ public class UI {
         String instructor = readText("Instruktør: ");
         int capacity = readInt("Antal pladser: ");
 
-        // TODO (2.2): Opret et TrainingSession-objekt, og tilføj det til FitnessCenter
-        notImplemented();
+        TrainingSession session1= new TrainingSession(title, instructor, capacity);
+        center.addSession(session1);
+
     }
 
     private void bookSession() {
         int memberId = readInt("Medlemsnummer: ");
         String title = readText("Træningstime: ");
 
-        // TODO: Find medlemmet og træningstimen i FitnessCenter.
-        //       Hvad skal der ske, hvis en af dem ikke findes?
-        // TODO: Bed FitnessCenter om at booke træningstimen for medlemmet
-        notImplemented();
+        Member member = center.findMember(memberId);
+        TrainingSession session =center.findSession(title);
+
+        center.bookSession(member, session);
+        System.out.println("session booked");
+
     }
 
     private void cancelBooking() {
         int memberId = readInt("Medlemsnummer: ");
         String title = readText("Træningstime der skal afmeldes: ");
 
-        // TODO: Find medlemmet og træningstimen, og bed FitnessCenter om at afmelde bookingen
-        notImplemented();
+        Member member = center.findMember(memberId);
+        TrainingSession session =center.findSession(title);
+        session.removeParticipant(member);
     }
 
     private void showBookings() {
         int memberId = readInt("Medlemsnummer: ");
+        Member member = center.findMember(memberId);
+        member.printBookings();
 
-        // TODO: Find medlemmet, og udskriv medlemmets aktive bookinger
-        notImplemented();
     }
 
-    private void notImplemented() {
+    /*private void notImplemented() {
 
         System.out.println("Dette menupunkt er ikke lavet endnu.");
-    }
+    }*/
 
 
     // TODO:Finder medlemmet og skriver en besked, hvis det ikke findes
